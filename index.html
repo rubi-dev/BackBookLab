@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BackBookLab- Rent Books without Buying</title>
+    <meta name="description" content="BBL - Rent books easily with BBL. Affordable books, easy return and 50% cashback for every reader! ">
+    
+      <!-- Signature by Rubi -->
+    <!-- Project by Rubi (June 2025) | Portfolio Showcase | HTML + CSS + JS -->
+
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">
+                    <div class="logo">
+                        <span class="logo-text">BBL</span>
+                        <div class="logo-underline"></div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#books" class="nav-link">Books</a>
+                <a href="#progress" class="nav-link">Progress</a>
+                <a href="#return" class="nav-link">Return</a>
+            </div>
+            
+            <div class="nav-actions">
+                <div class="cart-btn" onclick="showSection('cart')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-bg">
+                <img src="images/Library.avif" alt="Library">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">Read. Return. <span class="highlight">Repeat.</span></h1>
+                <p class="hero-subtitle">Your premium book rental experience. Discover unlimited books at affordable prices.</p>
+                <button class="hero-btn" onclick="showSection('books')">
+                    Browse Books <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+      <!--Features -->
+        <div class="features">
+            <div class="container">
+                <div class="features-header">
+                    <h2>Why Choose BBL?</h2>
+                    <p>Experience the future of book reading with our innovative rental system</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h3>Affordable Pricing</h3>
+                        <p>Rent books at fraction of their cost and save money while reading more</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <h3>50% Cashback</h3>
+                        <p>Return books and get 50% of your rental fee back as cashback</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div  
+        
+                        <h3>Progress Tracking</h3>
+                        <p>Track your reading progress and rental history in real-time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Section -->
+    <section id="books" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Book Collection</h1>
+                <p>Discover your next favorite read from our premium collection</p>
+                <div class="stats-badges">
+                    <span class="badge"><i class="fas fa-book"></i> <span id="total-books">8</span> Books Available</span>
+                    <span class="badge"><i class="fas fa-star"></i> Premium Quality</span>
+                    <span class="badge"><i class="fas fa-clock"></i> Instant Rental</span>
+                </div>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters-panel">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search books by title or author...">
+                </div>
+                <div class="filter-controls">
+                    <select id="category-filter">
+                        <option value="all">All Categories</option>
+                        <option value="fiction">Fiction</option>
+                        <option value="non-fiction">Non-Fiction</option>
+                        <option value="science">Science</option>
+                        <option value="technology">Technology</option>
+                    </select>
+                    <select id="price-filter">
+                        <option value="all">All Prices</option>
+                        <option value="under-10">Under $10</option>
+                        <option value="10-15">$10 - $15</option>
+                        <option value="15-20">$15 - $20</option>
+                        <option value="over-20">Over $20</option>
+                    </select>
+                    <select id="sort-filter">
+                        <option value="popularity">Most Popular</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="title">Title A-Z</option>
+                    </select>
+                    <button id="clear-filters" class="clear-btn" style="display: none;">Clear Filters</button>
+                </div>
+                <div class="results-info">
+                    <span id="results-count">Showing 8 of 8 books</span>
+                </div>
+            </div>
+            
+            <!-- Books Grid -->
+            <div id="books-grid" class="books-grid">
+    
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Shopping Cart</h1>
+                <p>Review your selected books before rental</p>
+            </div>
+            <div id="cart-content" class="cart-content">
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <section id="progress" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Progress Tracker</h1>
+                <p>Monitor your reading journey and rental history</p>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card blue">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <span class="stat-label">Books Rented</span>
+                            <span class="stat-value" id="total-rented">0</span>
+                        </div>
+                        <i class="fas fa-book stat-icon"></i>
+                    </div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <span class="stat-label">Books Returned</span>
+                            <span class="stat-value" id="total-returned">0</span>
+                        </div>
+                        <i class="fas fa-undo stat-icon"></i>
+                    </div>
+                </div>
+                <div class="stat-card purple">
+                    <div class="stat-content">
+                        <div class="stat-info">
+                            <span class="stat-label">Total Cashback</span>
+                            <span class="stat-value" id="total-cashback">$0.00</span>
+                        </div>
+                        <i class="fas fa-dollar-sign stat-icon"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Current Rentals -->
+            <div class="progress-section">
+                <h2><i class="fas fa-book"></i> Current Rentals</h2>
+                <div id="current-rentals" class="rentals-list">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Return Section -->
+    <section id="return" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h1>Return Books</h1>
+                <p>Return your rented books and get 50% cashback</p>
+            </div>
+            
+            <!-- Return Policy -->
+            <div class="return-policy">
+                <h3><i class="fas fa-info-circle"></i> Return Policy</h3>
+                <p>Return any book and get 50% of your rental fee back as cashback!</p>
+            </div>
+            
+            <div id="return-books" class="return-list">
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 id="modal-title">Success!</h3>
+                <p id="modal-message">Action completed successfully.</p>
+            </div>
+            <button class="modal-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
